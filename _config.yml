@@ -1,27 +1,25 @@
 ---
-baseurl: "/extend-the-docs"
-description: The Just the Docs Jekyll theme extended
-permalink: pretty
-repository: Potherca/extend-the-docs
-remote_theme: pmarsceill/just-the-docs
-title: Extend the docs Jekyll theme
-url: "https://pother.ca"
+# Repository specific settings
+baseurl: "/jekyll-theme"
+description: "Jekyll theme for all PDS Interop sites using GitHub Pages"
+repository: "pdsinterop/jekyll-theme"
+title: "PDS Interop custom Jekyll theme"
 
-plugins:
-  - github-pages
+# Organisation-wide settings
+logo: "https://avatars3.githubusercontent.com/u/65920341"
+remote_theme: "pdsinterop/jekyll-theme@theme"
+url: "https://pdsinterop.org"
 
-# Extend the Docs (Fork) settings
+# Extend the Docs settings
 nav:
   exclude:
     - "/"
   recurse: true
   cross_repository:
-    show_homepage: false # use the homepage (from the repository settings) instead of https://site.url/repository-name
-    show_archived: false  # Whether to include repositories that have been archived (true) or not (false)
+    show_homepage: true
+    show_archived: false
 
-# Just the Docs (Source) settings
+# Just the Docs settings
 aux_links:
-  "Potherca on GitHub":
-    - "https://github.com/Potherca"
-gh_edit_repository: https://github.com/Potherca/extend-the-docs
-search_enabled: false
+  "PDS Interop on GitHub":
+    - "https://github.com/pdsinterop"

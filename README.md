@@ -1,68 +1,135 @@
-<p align="right">
-    <a href="https://badge.fury.io/rb/just-the-docs"><img src="https://badge.fury.io/rb/just-the-docs.svg" alt="Gem version"></a> <a href="https://github.com/pmarsceill/just-the-docs/actions?query=workflow%3A%22Master+branch+CI%22"><img src="https://github.com/pmarsceill/just-the-docs/workflows/Master%20branch%20CI/badge.svg" alt="Build status"></a>
-</p>
-<br><br>
-<p align="center">
-    <h1 align="center">Just the Docs</h1>
-    <p align="center">A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.<br>Easily hosted on GitHub Pages with few dependencies.</p>
-    <p align="center"><strong><a href="https://pmarsceill.github.io/just-the-docs/">See it in action!</a></strong></p>
-    <br><br><br>
-</p>
+# PDS Interop Jekyll Theme
 
-![jtd](https://user-images.githubusercontent.com/896475/47384541-89053c80-d6d5-11e8-98dc-dba16e192de9.gif)
+[![license](https://img.shields.io/github/license/pdsinterop/jekyll-theme.svg)](LICENSE)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Installation
+_Jekyll theme for all PDS Interop sites using GitHub Pages_
 
-Add this line to your Jekyll site's Gemfile:
+GitHub use [Jekyll](https://jekyllrb.com/) to generate a static website for any
+repositoy that has enabled [the "GitHub Pages" feature](https://docs.github.com/en/github/working-with-github-pages/about-github-pages).
 
-```ruby
-gem "just-the-docs"
+This repository contains a theme that is meant to be used by all PDS Interop
+projects that use GitHub Pages to host their contents. The theme used is a
+customized version of [Just the Docs](https://pmarsceill.github.io/just-the-docs/)
+called [Extend the Docs](https://github.com/Potherca/extend-the-docs).
+
+The easiest way to use this theme is through the [Jekyll remote theme feature](https://github.com/benbalter/jekyll-remote-theme).
+
+## Install
+
+To use this theme:
+
+1. Enable Github Pages
+2. Configure Jekyll
+
+## 1. Enable Github Pages
+
+Before a repository can publish a website, the GitHub Pages feature needs to be
+enabled. This is done by [configuring a build source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+for the website:
+
+1. Navigate to the site's repository.
+
+2. Under the repository name, click  Settings.
+![Repository settings button](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
+
+3. Under "GitHub Pages", use the Source drop-down menu and select a publishing source.
+![Drop down menu to select a publishing source](https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png)
+
+GitHub will now publish any Markdown file as HTML using the ["Primer" Jekyll theme](https://github.com/pages-themes/primer)
+by default. A different theme can be used by configuring Jekyll.
+
+## 2. Configure Jekyll
+
+For the website hosted by GitHub Pages to use this repository as a theme, Jekyll
+must be told to use it. This is done by configuring Jekyll through a
+`_config.yml` file.
+
+As soon as the `_config.yml` file is part of the source that has been configured
+as the source for GitHub Pages, the repository website will use this theme.
+
+The following settings are recommended:
+
+```yml
+---
+# Repository specific settings
+#
+# THESE SHOULD BE CHANGED TO MATCH THE REPOSITORY
+#
+baseurl: "/repository-name"
+description: "Repository description goes here"
+repository: "pdsinterop/repository-name"
+title: "Repository Title"
+
+# Organisation-wide settings
+logo: "https://avatars3.githubusercontent.com/u/65920341"
+remote_theme: "pdsinterop/jekyll-theme@theme"
+url: "https://pdsinterop.org"
+
+# Extend the Docs settings
+nav:
+  exclude:
+    - "/"
+  recurse: true
+  cross_repository:
+    show_homepage: true
+    show_archived: false
+
+# Just the Docs settings
+aux_links:
+  "PDS Interop on GitHub":
+    - "https://github.com/pdsinterop"
+search_enabled: true
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-theme: just-the-docs
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install just-the-docs
+### 3. Commit and push the file
 
 ## Usage
 
-[View the documentation](https://pmarsceill.github.io/just-the-docs/) for usage information.
+The most common use-cases (how to exclude documents from being build as web page
+and how to exclude a web page from the navigation) are described below.
+
+For other configuration details, please visit the config documentation of:
+
+- [Extend the Docs](https://pother.ca/extend-the-docs/)
+- [Jekyll](https://jekyllrb.com/docs/configuration/)
+- [Just the Docs](https://pmarsceill.github.io/just-the-docs/docs/configuration/)
+
+### Excluding documents from the website
+
+Any files that should not appear as document in the website should be set in the
+root of the `_config.yml` file:
+
+```
+exclude:
+- "document/to/exclude.md"
+```
+
+### Excluding pages from the navigation
+
+Documents that should be rendered as a web-pages but should not appear in the
+navigation menu, should be set in the `nav` section of the `_config.yml` file:
+
+```
+nav:
+  exclude:
+    - "page/to/exclude/"
+```
+
+## Implementation details
+
+This repository was created with a separate orphan branch for each element that
+is combined into the PDS Interop Jekyll theme.
+
+Each branch is then merged into the `theme` branch which can be used elsewhere.
+
+This, the `master` branch, contains PDS interop specific files, config and docs.
+
+<!--
+@TODO:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pmarsceill/just-the-docs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-### Submitting code changes:
-
-- Open a [Pull Request](https://github.com/pmarsceill/just-the-docs/pulls)
-- Ensure all CI tests pass
-- Await code review
-- Bump the version number in `just-the-docs.gemspec` and `package.json` according to [semantic versioning](https://semver.org/).
-
-### Design and development principles of this theme:
-
-1. As few dependencies as possible
-2. No build script needed
-3. First class mobile experience
-4. Make the content shine
-
-## Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is set up just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When the theme is released, only the files in `_layouts`, `_includes`, and `_sass` tracked with Git will be released.
-
 ## License
 
-The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+-->
