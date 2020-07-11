@@ -125,6 +125,27 @@ Each branch is then merged into the `theme` branch which can be used elsewhere.
 
 This, the `master` branch, contains PDS interop specific files, config and docs.
 
+The exact commands that were run are:
+
+```sh
+git init && git commit --allow-empty --allow-empty-message -m '' && git tag -sam ''  v0.0.0
+
+git checkout --orphan extend-the-docs
+git remote add extend-the-docs https://github.com/Potherca/extend-the-docs.git
+git fetch extend-the-docs
+git merge --allow-unrelated-histories extend-the-docs/master
+
+git checkout --orphan just-the-docs
+git remote add just-the-docs https://github.com/pmarsceill/just-the-docs.git
+git fetch just-the-docs
+git merge --allow-unrelated-histories just-the-docs/master
+
+git checkout --orphan theme
+git merge --allow-unrelated-histories just-the-docs
+git merge --allow-unrelated-histories -X theirs extend-the-docs
+git merge --allow-unrelated-histories -X theirs master
+```
+
 <!--
 @TODO:
 
