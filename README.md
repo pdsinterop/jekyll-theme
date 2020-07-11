@@ -79,7 +79,6 @@ nav:
 aux_links:
   "PDS Interop on GitHub":
     - "https://github.com/pdsinterop"
-search_enabled: true
 ```
 
 ### 3. Commit and push the file
