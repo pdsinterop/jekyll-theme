@@ -1,0 +1,25 @@
+---
+# Repository specific settings
+baseurl: "/jekyll-theme"
+description: "Jekyll theme for all PDS Interop sites using GitHub Pages"
+repository: "pdsinterop/jekyll-theme"
+title: "PDS Interop custom Jekyll theme"
+
+# Organisation-wide settings
+logo: "https://avatars3.githubusercontent.com/u/65920341"
+remote_theme: "pdsinterop/jekyll-theme@theme"
+url: "https://pdsinterop.org"
+
+# Extend the Docs settings
+nav:
+  exclude:
+    - "/"
+  recurse: true
+  cross_repository:
+    show_homepage: true
+    show_archived: false
+
+# Just the Docs settings
+aux_links:
+  "PDS Interop on GitHub":
+    - "https://github.com/pdsinterop"
