@@ -1,3 +1,6 @@
+# This project has been superceded by using [Extend-the-docs](https://github.com/Potherca/extend-the-docs) directly as theme in Jekyll.
+
+<!--
 # PDS Interop Jekyll Theme
 
 [![license](https://img.shields.io/github/license/pdsinterop/jekyll-theme.svg)](LICENSE)
@@ -145,7 +148,6 @@ git merge --allow-unrelated-histories -X theirs extend-the-docs
 git merge --allow-unrelated-histories -X theirs master
 ```
 
-<!--
 @TODO:
 
 ## Contributing
